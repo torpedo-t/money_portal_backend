@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  type: 
+  memo: MyString
+  date: 2022-01-31 11:13:43
+  bank_account_id: 1
+
+two:
+  amount: 1
+  type: 
+  memo: MyString
+  date: 2022-01-31 11:13:43
+  bank_account_id: 1
