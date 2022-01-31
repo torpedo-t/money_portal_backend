@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  starting_balance: 1
+  low_balance_alert: 1
+
+two:
+  name: MyString
+  type: 
+  starting_balance: 1
+  low_balance_alert: 1
