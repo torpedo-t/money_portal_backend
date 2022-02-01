@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_204350) do
+ActiveRecord::Schema.define(version: 2022_02_01_030411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,11 @@ ActiveRecord::Schema.define(version: 2022_01_31_204350) do
     t.integer "amount"
     t.string "transaction_type"
     t.string "memo"
-    t.integer "bank_account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bank_account_id"
+    t.index ["bank_account_id"], name: "index_transactions_on_bank_account_id"
   end
 
+  add_foreign_key "transactions", "bank_accounts"
 end
