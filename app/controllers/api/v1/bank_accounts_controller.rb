@@ -1,8 +1,9 @@
 class Api::V1::BankAccountsController < ApplicationController
     def index
         bank_accounts = BankAccount.all
-        render json: bank_accounts
+        render json: BankAccountSerializer.new(bank_accounts)
     end
+    
     def create 
         bank_account = BankAccount.new(bank_account_params)
         if bank_account.save
