@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_030411) do
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "bank_account_id"
+    t.bigint "bank_account_id", null: false
     t.index ["bank_account_id"], name: "index_transactions_on_bank_account_id"
   end
 
