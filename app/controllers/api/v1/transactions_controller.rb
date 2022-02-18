@@ -7,7 +7,7 @@ class Api::V1::TransactionsController < ApplicationController
     def create 
         transaction = Transaction.new(transaction_params)
         if transaction.save
-            render json: transaction, status: :accepted
+            render json: TransactionSerializer.new(transaction), status: :accepted
         else
             render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
         end
