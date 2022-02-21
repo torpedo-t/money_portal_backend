@@ -14,6 +14,16 @@ class Api::V1::BankAccountsController < ApplicationController
         end
     end
 
+    def show
+        bank_account = BankAccount.find[params[:id]]
+        render json: bank_account
+    end
+
+    def destroy 
+        bank_account = BankAccount.find(params[:id])
+        bank_account.destroy
+    end
+
     private
 
     def bank_account_params
