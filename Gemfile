@@ -20,6 +20,8 @@ gem 'active_model_serializers', '~> 0.10.13'
 
 # gem 'fast_jsonapi'
 
+gem 'pry', '~> 0.14.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

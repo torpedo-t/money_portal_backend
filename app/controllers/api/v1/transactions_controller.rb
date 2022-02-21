@@ -4,14 +4,14 @@ class Api::V1::TransactionsController < ApplicationController
 
     def index 
         transactions = @account.transactions
-        render json: TransactionSerializer.new(transactions)
+        render json: transactions
     end
 
     def create 
         transaction = @account.transactions.new(transaction_params)
         if @account.update_balance(transaction) != 'Balance too low...'
             transaction.save
-            render json: TransactionSerializer.new(transaction), status: :accepted
+            render json: transaction
         else
             render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
         end

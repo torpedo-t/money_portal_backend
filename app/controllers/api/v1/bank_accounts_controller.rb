@@ -1,6 +1,9 @@
 class Api::V1::BankAccountsController < ApplicationController
 
+    before_action :get_account, only: [:show, :destroy]
+
     def index
+        # binding.pry
         bank_accounts = BankAccount.all
         render json: bank_accounts
     end
