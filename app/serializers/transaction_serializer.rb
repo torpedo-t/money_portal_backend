@@ -1,4 +1,3 @@
-class TransactionSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :amount, :transaction_type, :memo, :bank_account
+class TransactionSerializer < ActiveModel::Serializer
+  attributes :id, :amount, :transaction_type, :memo
 end
