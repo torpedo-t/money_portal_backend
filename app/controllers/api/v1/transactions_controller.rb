@@ -1,12 +1,16 @@
 class Api::V1::TransactionsController < ApplicationController
+
+    before_action :get_account
+
     def index 
-        transactions = Transaction.all
+        transactions = @account.transactions
         render json: TransactionSerializer.new(transactions)
     end
 
     def create 
-        transaction = Transaction.new(transaction_params)
-        if transaction.save
+        transaction = @account.transactions.new(transaction_params)
+        if @account.update_balance(transaction) != 'Balance too low...'
+            transaction.save
             render json: TransactionSerializer.new(transaction), status: :accepted
         else
             render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
@@ -14,15 +18,21 @@ class Api::V1::TransactionsController < ApplicationController
     end
 
     def show
-
+        transaction = Transaction.find(params[:id])
+        render json: transaction
     end
 
     def destroy
-
+        transaction = Transaction.find(params[:id])
+        transaction.destroy
     end
 
 
     private
+
+    def get_account 
+        @account = Transaction.find(params[:bank_account_id])
+    end
 
     def transaction_params
         params.require(:transaction).permit(:amount, :transaction_type, :memo, :bank_account_id)

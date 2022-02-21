@@ -5,12 +5,15 @@ class BankAccount < ApplicationRecord
 
     def update_balance(transaction)
         if transaction.transaction_type == 'deposit'
-            self.balance = self.balance + transaction.amount
+            self.starting_balance = self.starting_balance + transaction.amount
             self.save
-        else
-            transaction.transaction_type == 'withdraw'
-            self.balance = self.balance - transaction.amount
+        elsif transaction.transaction_type == 'withdraw'
+            if self.starting_balance >= transaction.amount
+            self.starting_balance = self.starting_balance - transaction.amount
             self.save
+            else 
+                return 'Balance too low...'
+            end
         end
     end
 end
