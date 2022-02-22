@@ -6,8 +6,9 @@ class Api::V1::BankAccountsController < ApplicationController
     
     def create 
         bank_account = BankAccount.new(bank_account_params)
+        # byebug
         if bank_account.save
-            render json: bank_account, status: :accepted
+            render json: BankAccountSerializer.new(bank_account), status: :accepted
         else
             render json: { errors: bank_account.errors.full_messages }, status: :unprocessable_entity
         end
