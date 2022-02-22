@@ -17,6 +17,4 @@ input type text area description
 
 renderTransactionCard()
 
-
-
-Tomorrow at 5 pm open hours javascript ask about button functionality and how it's returning the first bank account's transactions for each button
+onclick="removeAllChildNodes('#create-bank-account-form')"
