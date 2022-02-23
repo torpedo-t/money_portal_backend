@@ -25,7 +25,7 @@ class Api::V1::TransactionsController < ApplicationController
     private
 
     def get_account 
-        @account = Transaction.find(params[:bank_account_id])
+        @account = BankAccount.find(params[:bank_account_id])
     end
 
     def transaction_params
