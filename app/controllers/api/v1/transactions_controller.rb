@@ -4,12 +4,16 @@ class Api::V1::TransactionsController < ApplicationController
 
     def index 
         transactions = @account.transactions
+        # if !transactions
+        # render ????
+        # else
         render json: TransactionSerializer.new(transactions)
     end
 
     def create 
+        # byebug
         transaction = @account.transactions.new(transaction_params)
-        if @acount.update_balance(transaction) != "Balance too low."
+        if @account.update_balance(transaction) != "Balance too low."
             transaction.save
             render json: TransactionSerializer.new(transaction), status: :accepted
         else

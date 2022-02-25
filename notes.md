@@ -1,20 +1,26 @@
-I want to add an event listener on 'click' of button with id '#view'
-onclick="getBankAccountTransactions(${this.id})"
+First,
+I want to render bank accout form in index.html
+- inserted a form in vanilla html in index.html
 
-call function updateDom()
-literally calls on removeFormContainer()
-div class="form-container"
+then,
+I want to render the bank account card
+- invoke renderBankAccounts()
 
-removeBankAccountCard()
-div id='bank-account-card'
+then,
+I want to attach an event listener on all html elements with class of 'view'
+iterate over all buttons and add event listener for 'click'
+once a click happens invoke getBankAccountTransactions(id)
 
-renderTransactionForm()
-div id='transaction-form'
-form id='create-transaction-form'
-input type text amount
-select type: deposit, cash withdrawal, point of sale, check, transfer, card number entered
-input type text area description
+also, remove #create-bank-account-form from .form-container, remove #bank-account-card from #container
+also, attach event listener for 'submit' on #create-transaction-form
+also, invoke renderNewTransactionForm
+once submit event happens updateDom - update #transaction-card inner html value to ''
+then, invoke getBankAccountTransactions(id)
 
-renderTransactionCard()
+#go-back button invokes a function that removes .transaction-form-container, #bank-account-card, #transaction-card from #container
+and, appends #create-bank-account-form to .form-container
 
-onclick="removeAllChildNodes('#create-bank-account-form')"
+FIX ISSUES - 
+I can't view newly created bank account transactions index. Need additional conditions in Transactions controller i think
+
+I need to iterate over my transaction object in renderTransactionCard() - unaware of the correct syntax
