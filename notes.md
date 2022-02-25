@@ -24,3 +24,5 @@ FIX ISSUES -
 I can't view newly created bank account transactions index. Need additional conditions in Transactions controller i think
 
 I need to iterate over my transaction object in renderTransactionCard() - unaware of the correct syntax
+
+look into element.insertAdjacentHTML() - probably going to replace .innerHTML += in index.js files everywhere
