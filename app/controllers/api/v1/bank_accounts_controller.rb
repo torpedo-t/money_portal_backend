@@ -9,6 +9,7 @@ class Api::V1::BankAccountsController < ApplicationController
     end
     
     def create 
+        # binding.pry
         bank_account = BankAccount.new(bank_account_params)
         # byebug
         if bank_account.save
