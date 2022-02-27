@@ -25,10 +25,10 @@ class Api::V1::TransactionsController < ApplicationController
     private
 
     def get_account 
-        @account = BankAccount.find(params[:bank_account_id])
+        @account = Account.find(params[:account_id])
     end
 
     def transaction_params
-        params.require(:transaction).permit(:amount, :transaction_type, :memo, :bank_account_id)
+        params.require(:transaction).permit(:amount, :transaction_type, :memo, :account_id)
     end
 end

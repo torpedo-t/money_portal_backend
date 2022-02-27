@@ -1,4 +1,4 @@
-class BankAccount < ApplicationRecord
+class Account < ApplicationRecord
     has_many :transactions, dependent: :destroy
     validates :name, presence: true
     validates :starting_balance, presence: true

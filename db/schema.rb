@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_20_015844) do
+ActiveRecord::Schema.define(version: 2022_02_27_172145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bank_accounts", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "account_type"
     t.float "starting_balance"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2022_02_20_015844) do
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "bank_account_id", null: false
-    t.index ["bank_account_id"], name: "index_transactions_on_bank_account_id"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
-  add_foreign_key "transactions", "bank_accounts"
+  add_foreign_key "transactions", "accounts"
 end
