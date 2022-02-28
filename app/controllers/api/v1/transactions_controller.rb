@@ -11,7 +11,7 @@ class Api::V1::TransactionsController < ApplicationController
         transaction = @account.transactions.new(transaction_params)
         if @account.update_balance(transaction) != 'Balance too low...'
             transaction.save
-            render json: transaction
+            render json: @account
         else
             render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
         end

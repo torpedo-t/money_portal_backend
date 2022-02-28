@@ -4,10 +4,10 @@ class Account < ApplicationRecord
     validates :starting_balance, presence: true
 
     def update_balance(transaction)
-        if transaction.transaction_type == 'deposit'
+        if transaction.transaction_type == 'Deposit'
             self.starting_balance = self.starting_balance + transaction.amount
             self.save
-        elsif transaction.transaction_type == 'withdraw'
+        elsif transaction.transaction_type == 'Withdraw'
             if self.starting_balance >= transaction.amount
             self.starting_balance = self.starting_balance - transaction.amount
             self.save
