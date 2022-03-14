@@ -13,13 +13,25 @@ class Api::V1::TransactionsController < ApplicationController
             transaction.save
             render json: @account
         else
-            render json: { errors: transaction.errors.full_messages }, status: :unprocessable_entity
+            render json: { error: 'Balance too low...' }, status: :unprocessable_entity
         end
     end
 
     def show
         transaction = Transaction.find(params[:id])
         render json: transaction
+    end
+
+    def destroy
+        # binding.pry
+        transaction = Transaction.find(params[:id])
+        account = Account.find(transaction.account_id)
+        if account.update_balance_after_destroy(transaction)
+            transaction.destroy
+            render json: account
+        else
+            render json: {error: 'Balance too low...'}
+        end
     end
 
     private
